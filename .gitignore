@@ -1,0 +1,36 @@
+# Node dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test / temp files
+temp_test_output/
+test_results.txt
+stdout.txt
+stderr.txt
+
+# Build / cache
+dist/
+build/
+.cache/
+
+# Editor settings
+.vscode/
+.idea/
+
+# Optional: ZIPs & generated files
+*.zip
+*.tar
+*.gz
