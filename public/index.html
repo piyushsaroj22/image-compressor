@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compress Images & PDFs Instantly</title>
+    <meta name="description"
+        content="Reduce file size without quality loss. Supports JPG, PNG, WEBP, PDF. Fast, private, and secure.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- 1. LANDING SCREEN -->
+    <section id="landing-view" class="view active">
+        <header>
+            <div class="logo">Compressor<span class="dot">.</span></div>
+        </header>
+
+        <main class="hero">
+            <h1>Compress Images & PDFs Instantly</h1>
+            <p class="subtext">Reduce file size without quality loss</p>
+
+            <div class="upload-box" id="drop-zone">
+                <input type="file" id="file-input" multiple accept="image/jpeg, image/png, image/webp, application/pdf">
+                <div class="upload-content">
+                    <svg class="upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12">
+                        </path>
+                    </svg>
+                    <span class="btn-primary">Select files</span>
+                    <span class="drag-text">or drop files here</span>
+                    <div class="meta-info">
+                        JPG, PNG, WEBP, PDF · Up to 200 files
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <!-- 2. FILE LIST (PRE-PROCESS) -->
+    <section id="file-list-view" class="view hidden">
+        <div class="container">
+            <div class="toolbar">
+                <button id="add-more-btn" class="btn-text">+ Add more</button>
+
+                <div class="target-size-wrapper">
+                    <label for="target-size-input">Target Size:</label>
+                    <input type="number" id="target-size-input" placeholder="e.g. 500" min="1">
+                    <select id="target-size-unit">
+                        <option value="KB" selected>KB</option>
+                        <option value="MB">MB</option>
+                    </select>
+                </div>
+
+                <div class="right-actions">
+                    <button id="clear-all-btn" class="btn-text danger">Clear All</button>
+                </div>
+            </div>
+
+            <div class="file-list" id="file-list-container">
+                <!-- File Items injected here -->
+            </div>
+
+            <div class="action-dock">
+                <div class="file-count"><span id="total-files-count">0</span> files selected</div>
+                <button id="compress-btn" class="btn-main">Compress Files</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. PROCESSING VIEW -->
+    <section id="processing-view" class="view hidden">
+        <div class="container centered">
+            <h2>Compressing your files...</h2>
+            <div class="progress-wrapper">
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="global-progress-bar" style="width: 0%"></div>
+                </div>
+                <div class="status-text" id="processing-status-text">Processing 0 of 0</div>
+            </div>
+
+            <!-- Realtime status list -->
+            <div class="processing-list">
+                <!-- Status items if needed, or kept simple as per request -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. RESULTS VIEW -->
+    <section id="results-view" class="view hidden">
+        <div class="container">
+            <header class="results-header">
+                <h2>Compression Complete!</h2>
+                <div class="header-actions">
+                    <button id="download-all-btn" class="btn-main">Download All (ZIP)</button>
+                    <button id="compress-more-btn" class="btn-secondary">Compress More</button>
+                </div>
+            </header>
+
+            <div class="results-list" id="results-list-container">
+                <!-- Result Items injected here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- UI Templates (Hidden) -->
+    <template id="file-item-template">
+        <div class="file-item">
+            <div class="file-preview"></div> <!-- Thumbnail or Icon -->
+            <div class="file-details">
+                <div class="file-name">filename.jpg</div>
+                <div class="file-meta">
+                    <span class="file-size">2MB</span>
+                    <span class="file-type badge">IMAGE</span>
+                </div>
+            </div>
+            <button class="remove-btn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </template>
+
+    <template id="result-item-template">
+        <div class="result-item">
+            <div class="file-preview"></div>
+            <div class="result-info">
+                <div class="file-name">filename.jpg</div>
+                <div class="savings">
+                    <span class="new-size">500KB</span>
+                    <span class="reduction-badge">-50%</span>
+                </div>
+            </div>
+            <a href="#" class="download-btn-icon" download>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                </svg>
+            </a>
+        </div>
+    </template>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
