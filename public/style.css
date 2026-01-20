@@ -529,24 +529,42 @@ header {
         height: 280px;
     }
 
+    /* Toolbar Reordering */
     .toolbar {
-        flex-direction: column;
-        align-items: stretch;
+        flex-direction: row;
+        /* Keep row to allow split */
+        flex-wrap: wrap;
+        /* Allow wrapping */
+        justify-content: space-between;
+        align-items: center;
         gap: 1rem;
     }
 
+    /* Order: Add More (Left) */
+    #add-more-btn {
+        order: 1;
+    }
+
+    /* Order: Clear All (Right) */
+    .right-actions {
+        order: 2;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    /* Order: Target Size (Bottom Full Width) */
     .target-size-wrapper {
-        justify-content: center;
+        order: 3;
         width: 100%;
+        justify-content: center;
+        margin-top: 0.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border);
     }
 
     .target-size-wrapper input {
         flex: 1;
-    }
-
-    .right-actions {
-        display: flex;
-        justify-content: center;
+        max-width: 120px;
     }
 
     .action-dock {
@@ -593,4 +611,6 @@ header {
     .file-name {
         font-size: 0.9rem;
     }
+}
+
 }
